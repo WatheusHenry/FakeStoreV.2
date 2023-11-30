@@ -1,7 +1,7 @@
 apply plugin: "war"
 
 bootWar {
-    mainClass = "br.org.ciag.fakestore.JhipsterApp"
+    mainClass = "br.org.ciag.fakestore.FakeStoreApp"
     includes = ["WEB-INF/**", "META-INF/**"]
     webXml = file("${project.rootDir}/src/main/webapp/WEB-INF/web.xml")
 }

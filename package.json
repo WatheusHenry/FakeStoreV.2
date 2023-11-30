@@ -1,8 +1,8 @@
 {
-  "name": "jhipster",
+  "name": "fake-store",
   "version": "0.0.1-SNAPSHOT",
   "private": true,
-  "description": "Description for JHipster",
+  "description": "Description for Fake Store",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./gradlew",
@@ -28,8 +28,8 @@
     "ci:frontend:test": "npm run ci:frontend:build && npm test",
     "clean-www": "rimraf build/resources/main/static/",
     "cleanup": "rimraf build/",
-    "docker:db:down": "docker compose -f src/main/docker/postgresql.yml down -v",
-    "docker:db:up": "docker compose -f src/main/docker/postgresql.yml up --wait",
+    "docker:db:down": "docker compose -f src/main/docker/mysql.yml down -v",
+    "docker:db:up": "docker compose -f src/main/docker/mysql.yml up --wait",
     "java:docker": "./gradlew bootJar -Pprod jibDockerBuild",
     "java:docker:arm64": "npm run java:docker -- -PjibArchitecture=arm64",
     "java:docker:dev": "npm run java:docker -- -Pdev,webapp",

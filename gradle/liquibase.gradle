@@ -9,9 +9,7 @@ dependencies {
   liquibaseRuntime "info.picocli:picocli:4.7.5"
 
   liquibaseRuntime "org.liquibase.ext:liquibase-hibernate6:${liquibaseHibernate6Version}"
-  if (project.hasProperty("prod") || project.hasProperty("gae")) {
-  liquibaseRuntime "org.postgresql:postgresql"
-  }
+  liquibaseRuntime "com.mysql:mysql-connector-j"
 }
 
 project.ext.diffChangelogFile = "src/main/resources/config/liquibase/changelog/" + new Date().format("yyyyMMddHHmmss") + "_changelog.xml"
@@ -22,19 +20,19 @@ if (!project.hasProperty("runList")) {
 liquibase {
   activities {
     main {
-      driver "org.postgresql.Driver"
-      url "jdbc:postgresql://localhost:5432/jhipster"
-      username "jhipster"
+      driver "com.mysql.cj.jdbc.Driver"
+      url "jdbc:mysql://localhost:3306/FakeStore"
+      username "root"
       changelogFile "src/main/resources/config/liquibase/master.xml"
       logLevel "debug"
       classpath "src/main/resources/"
     }
     diffLog {
-      driver "org.postgresql.Driver"
-      url "jdbc:postgresql://localhost:5432/jhipster"
-      username "jhipster"
+      driver "com.mysql.cj.jdbc.Driver"
+      url "jdbc:mysql://localhost:3306/FakeStore"
+      username "root"
       changelogFile project.ext.diffChangelogFile
-      referenceUrl "hibernate:spring:br.org.ciag.fakestore.domain?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+      referenceUrl "hibernate:spring:br.org.ciag.fakestore.domain?dialect=org.hibernate.dialect.MySQL8Dialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
       logLevel "debug"
       classpath "$buildDir/classes/java/main"
     }

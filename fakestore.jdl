@@ -1,0 +1,46 @@
+// Definindo a entidade do Produto
+entity Product {
+    name String required
+    description String
+    price BigDecimal required
+}
+
+// Definindo a entidade de Categoria
+entity Category {
+    name String required
+    description String
+}
+
+// Definindo a entidade do Cliente
+entity Customer {
+    firstName String required
+    lastName String required
+    email String required
+    phoneNumber String
+    address String
+}
+
+// Definindo a entidade do Pedido
+entity Order {
+    orderDate Instant required
+    status OrderStatus required
+    totalAmount BigDecimal required
+}
+
+// Definindo o status do pedido como um enum
+enum OrderStatus {
+    CREATED, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+}
+
+// Relacionamento ManyToMany entre Produto e Categoria
+relationship ManyToMany {
+    Product{categories(name) required} to Category{products}
+}
+
+// Relacionamento OneToMany entre Cliente e Pedido
+relationship OneToMany {
+    Customer{orders} to Order{customer}
+}
+
+// Serviço para gerar CRUD para todas as entidades
+service * with serviceClass

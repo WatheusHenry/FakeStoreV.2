@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jhipster": {
+    "fake-store": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -76,15 +76,15 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "jhipster:build:development",
+            "browserTarget": "fake-store:build:development",
             "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "jhipster:build:production"
+              "browserTarget": "fake-store:build:production"
             },
             "development": {
-              "browserTarget": "jhipster:build:development"
+              "browserTarget": "fake-store:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -105,6 +105,7 @@
       "path": "./build/angular/",
       "environment": "all"
     },
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "5fef3d58-b755-45c4-99d3-d405d414b44e"
   }
 }

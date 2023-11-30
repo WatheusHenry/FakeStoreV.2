@@ -93,7 +93,7 @@ eclipse {
 defaultTasks "bootRun"
 
 springBoot {
-    mainClass = "br.org.ciag.fakestore.JhipsterApp"
+    mainClass = "br.org.ciag.fakestore.FakeStoreApp"
 }
 
 test {

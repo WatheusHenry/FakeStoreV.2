@@ -1,4 +1,4 @@
-# jhipster
+# FakeStore
 
 This application was generated using JHipster 8.0.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0](https://www.jhipster.tech/documentation-archive/v8.0.0).
 
@@ -113,7 +113,7 @@ update src/main/webapp/app/app.module.ts
 
 ### Packaging as jar
 
-To build the final jar and optimize the jhipster application for production, run:
+To build the final jar and optimize the FakeStore application for production, run:
 
 ```
 ./gradlew -Pprod clean bootJar
@@ -207,16 +207,16 @@ For more information, refer to the [Code quality page][].
 
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
-For example, to start a postgresql database in a docker container, run:
+For example, to start a mysql database in a docker container, run:
 
 ```
-docker compose -f src/main/docker/postgresql.yml up -d
+docker compose -f src/main/docker/mysql.yml up -d
 ```
 
 To stop it and remove the container, run:
 
 ```
-docker compose -f src/main/docker/postgresql.yml down
+docker compose -f src/main/docker/mysql.yml down
 ```
 
 You can also fully dockerize your application and all the services that it depends on.

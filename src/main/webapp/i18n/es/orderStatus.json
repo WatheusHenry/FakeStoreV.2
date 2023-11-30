@@ -1,0 +1,12 @@
+{
+  "fakeStoreApp": {
+    "OrderStatus": {
+      "null": "",
+      "CREATED": "CREATED",
+      "PROCESSING": "PROCESSING",
+      "SHIPPED": "SHIPPED",
+      "DELIVERED": "DELIVERED",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

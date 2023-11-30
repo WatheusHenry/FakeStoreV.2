@@ -1,10 +1,3 @@
-sourceSets {
-    test {
-        java {
-            exclude 'br/org/ciag/fakestore//config/PostgreSqlTestContainer.java'
-        }
-    }
-}
 
 configurations {
   all {
@@ -19,8 +12,8 @@ configurations {
 
 dependencies {
     developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
-    implementation "org.postgresql:postgresql"
-    testImplementation "org.testcontainers:postgresql"
+    implementation "com.mysql:mysql-connector-j"
+    testImplementation "org.testcontainers:mysql"
 }
 
 ext {
