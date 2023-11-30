@@ -2,8 +2,6 @@
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
-      <span jhiTranslate="global.title" class="navbar-title">FakeStore</span>
-      <span class="navbar-version">{{ version }}</span>
     </a>
     <a
       class="navbar-toggler d-lg-none"
@@ -148,7 +146,7 @@
             <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
           </ul>
         </li>
-        <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
+        <!-- <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
             <span>
               <fa-icon icon="flag"></fa-icon>
@@ -166,7 +164,7 @@
               >
             </li>
           </ul>
-        </li>
+        </li> -->
         <li
           ngbDropdown
           class="nav-item dropdown pointer"

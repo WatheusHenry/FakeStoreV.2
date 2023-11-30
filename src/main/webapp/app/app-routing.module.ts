@@ -16,8 +16,8 @@ import LoginComponent from './login/login.component';
       [
         {
           path: '',
-          component: HomeComponent,
-          title: 'home.title',
+          redirectTo: '/login', // Redirecionar para a tela de login se o caminho for vazio
+          pathMatch: 'full',
         },
         {
           path: '',
@@ -35,6 +35,12 @@ import LoginComponent from './login/login.component';
         {
           path: 'account',
           loadChildren: () => import('./account/account.route'),
+        },
+        {
+          path: 'home',
+          component: HomeComponent,
+          canActivate: [UserRouteAccessService],
+          title: 'home.title',
         },
         {
           path: 'login',

@@ -1,12 +1,10 @@
 <div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
-
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Bem vindo, Java Hipster!</span> (Fake Store)</h1>
-
-    <p class="lead" jhiTranslate="home.subtitle">Esta é a página principal</p>
+  <div class="col-md-9 main">
+    <span class="logo img-fluid rounded"></span>
+    <h4 class="subtext">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet magna vel leo euismod mattis. Nulla at nisl in risus semper
+      sagittis sit amet quis dui.
+    </h4>
 
     <div [ngSwitch]="account !== null">
       <div class="alert alert-success" *ngSwitchCase="true">
@@ -15,64 +13,29 @@
         >
       </div>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.authenticated.prefix">Se deseja </span>
-        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">entrar</a
-        ><span jhiTranslate="global.messages.info.authenticated.suffix"
-          >, utilize as seguintes contas padrões:<br />- Administrador (usuário="admin" and senha="admin") <br />- Usuário (usuário="user" e
-          senha="user").</span
-        >
-      </div>
+      <div class="alert alert-warning" *ngSwitchCase="false">deslogado</div>
 
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span jhiTranslate="global.messages.info.register.noaccount">Não possui uma conta ainda?</span>&nbsp;
-        <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Crie uma nova conta</a>
+      <div class="alert alert-warning" *ngSwitchCase="false">deslogado</div>
+    </div>
+    <div>
+      <span class="produtosText"></span>
+      <div class="produtos">
+        <div class="cardProdutos">
+          <img class="productImage" src="../../content/images/products/m171-mouse-top-view-grey.png" alt="" />
+          <h3>Titulo</h3>
+          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="cardProdutos">
+          <img class="productImage" src="../../content/images/products/mcr-hcrx-bl011.jpg" alt="" />
+          <h3>Titulo</h3>
+          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="cardProdutos">
+          <img class="productImage" src="../../content/images/products/Untitled.jpeg" alt="" />
+          <h3>Titulo</h3>
+          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
       </div>
     </div>
-
-    <p jhiTranslate="home.question">Em caso de dúvida sobre o JHipster:</p>
-
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >Página principal JHipster</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster no Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >Sala de bate-papo pública JHipster</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >siga @jhipster no Twitter</a
-        >
-      </li>
-    </ul>
-
-    <p>
-      <span jhiTranslate="home.like">Se você gosta do JHipster, não se esqueça de avaliar no</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
   </div>
 </div>

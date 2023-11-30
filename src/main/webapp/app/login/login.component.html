@@ -1,7 +1,12 @@
 <div>
-  <div class="d-flex justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-      <h1 jhiTranslate="login.title" data-cy="loginTitle">Autenticação</h1>
+  <div class="d-flex justify-content-center gap">
+    <div class="containerImgs">
+      <span class="logoImg"></span>
+
+      <span class="loginImg"></span>
+    </div>
+    <div class="containerLogin">
+      <h3 data-cy="loginTitle">Login</h3>
       <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication" data-cy="loginError">
         <strong>Erro de autenticação!</strong> Por favor verifique suas credenciais e tente novamente.
       </div>
@@ -39,16 +44,17 @@
             <span jhiTranslate="login.form.rememberme">Manter-me logado</span>
           </label>
         </div>
-
-        <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button" data-cy="submit">Entrar</button>
+        <div class="btndiv">
+          <button type="submit" class="btn" jhiTranslate="login.form.button" data-cy="submit">Entrar</button>
+        </div>
       </form>
-      <div class="mt-3 alert alert-warning">
+      <div class="mt-3 links">
         <a class="alert-link" routerLink="/account/reset/request" jhiTranslate="login.password.forgot" data-cy="forgetYourPasswordSelector"
           >Esqueceu sua senha?</a
         >
       </div>
 
-      <div class="alert alert-warning">
+      <div class="links">
         <span jhiTranslate="global.messages.info.register.noaccount">Não possui uma conta ainda?</span>
         <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Crie uma nova conta</a>
       </div>

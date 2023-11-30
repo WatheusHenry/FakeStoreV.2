@@ -2,12 +2,46 @@
 Main page styles
 ========================================================================== */
 
-.hipster {
+.main {
+  margin: auto;
+  text-align: center;
+}
+.logo {
   display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
-  background-size: contain;
+  width: 20rem;
+  height: 5rem;
+  background: url('../../content/images/logoFakeStoreCenter.png') no-repeat center top;
+  background-size: auto;
+}
+.subtext {
+  font-weight: 600;
+  margin: auto;
+  width: 40rem;
+}
+.produtosText {
+  display: inline-block;
+  width: 15rem;
+  height: 4rem;
+  background: url('../../content/images/productsText.png') no-repeat center;
+}
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  place-items: center;
+}
+.cardProdutos {
+  width: 20rem;
+  height: 25rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  border: 0.3rem black solid;
+}
+.productImage {
+  margin: auto;
+  width: 10rem;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
