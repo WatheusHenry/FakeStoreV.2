@@ -1,7 +1,13 @@
 <div class="d-flex justify-content-center">
-  <div class="col-8">
-    <div *ngIf="product">
-      <h2 data-cy="productDetailsHeading"><span jhiTranslate="fakeStoreApp.product.detail.title">Product</span></h2>
+  <button type="submit" (click)="previousState()" class="btn btnBack" data-cy="entityDetailsBackButton">
+    <fa-icon icon="arrow-left"></fa-icon><span></span>
+  </button>
+  <div class="d-flex containerAll">
+    <img src="../../../../content/images/products/mcr-hcrx-bl011.jpg" class="productImg" alt="" />
+    <div class="productDetails" *ngIf="product">
+      <h2 data-cy="productDetailsHeading">
+        <span>{{ product.name }}</span>
+      </h2>
 
       <hr />
 
@@ -9,35 +15,18 @@
 
       <jhi-alert></jhi-alert>
 
-      <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">Código</span></dt>
-        <dd>
-          <span>{{ product.id }}</span>
-        </dd>
-        <dt><span jhiTranslate="fakeStoreApp.product.name">Name</span></dt>
-        <dd>
-          <span>{{ product.name }}</span>
-        </dd>
-        <dt><span jhiTranslate="fakeStoreApp.product.description">Description</span></dt>
-        <dd>
-          <span>{{ product.description }}</span>
-        </dd>
-        <dt><span jhiTranslate="fakeStoreApp.product.price">Price</span></dt>
-        <dd>
-          <span>{{ product.price }}</span>
-        </dd>
-        <dt><span jhiTranslate="fakeStoreApp.product.categories">Categories</span></dt>
-        <dd>
-          <span *ngFor="let categories of product.categories; let last = last">
-            <a [routerLink]="['/category', categories.id, 'view']">{{ categories.name }}</a
-            >{{ last ? '' : ', ' }}
-          </span>
-        </dd>
-      </dl>
+      <div class="d-flex flex-column containerDetails">
+        <span class="price">R${{ product.price }}</span>
 
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
-      </button>
+        <!-- <span>{{ product.id }}</span> -->
+
+        <span class="details">{{ product.description }}</span>
+
+        <span class="category" *ngFor="let categories of product.categories; let last = last">
+          <a [routerLink]="['/category', categories.id, 'view']">{{ categories.name }}</a
+          >{{ last ? '' : ', ' }}
+        </span>
+      </div>
 
       <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>

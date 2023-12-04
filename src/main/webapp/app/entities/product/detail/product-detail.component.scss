@@ -1,0 +1,40 @@
+.containerAll {
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  padding: 2rem;
+}
+.btnBack {
+  margin: 1rem;
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  background-color: #7749f8;
+  color: white;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.productImg {
+  margin: 0 4rem;
+  width: 25rem;
+}
+.productDetails {
+  width: 30rem;
+}
+.containerDetails {
+  height: 20rem;
+}
+h2 {
+  font-weight: 600;
+}
+.price {
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+.details {
+  font-size: 1.5rem;
+}
+.category {
+  font-size: 1.5rem;
+}

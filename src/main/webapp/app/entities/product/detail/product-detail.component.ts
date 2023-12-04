@@ -9,6 +9,7 @@ import { IProduct } from '../product.model';
   standalone: true,
   selector: 'jhi-product-detail',
   templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.scss'],
   imports: [SharedModule, RouterModule, DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe],
 })
 export class ProductDetailComponent {

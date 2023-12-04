@@ -19,8 +19,7 @@
     </div>
     <div>
       <span class="produtosText"></span>
-      <div class="produtos">
-        <!-- <div class="cardProdutos">
+      <!-- <div class="cardProdutos">
           <img class="productImage" src="../../content/images/products/m171-mouse-top-view-grey.png" alt="" />
           <h3>{{products[0].name}}</h3>
           <p>{{products[0].description}}</p>
@@ -35,12 +34,16 @@
           <h3>{{products[2].name}}</h3>
           <p>{{products[2].description}}</p>
         </div> -->
-        <div class="produtos">
-          <div class="cardProdutos" *ngFor="let product of products.slice(0, 6)">
-            <img class="productImage" src="../../content/images/products/m171-mouse-top-view-grey.png" alt="" />
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-          </div>
+      <div class="produtos">
+        <div class="cardProdutos" *ngFor="let product of products.slice(0, 6)">
+          <img class="productImage" src="../../content/images/products/m171-mouse-top-view-grey.png" alt="" />
+          <h3 class="productTitle">{{ product.name }}</h3>
+          <p class="productDescription">{{ product.description }}</p>
+          <p class="productPrice">R${{ product.price }}</p>
+          <button [routerLink]="['/product', product.id, 'view']" class="btn" data-cy="entityDetailsButton">
+            <!-- <fa-icon icon="eye"></fa-icon> -->
+            <span class="d-none d-md-inline">Detalhes</span>
+          </button>
         </div>
       </div>
     </div>
