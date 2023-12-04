@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 import SharedModule from 'app/shared/shared.module';
 import { SortDirective, SortByDirective } from 'app/shared/sort';
@@ -17,8 +18,11 @@ import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.co
   standalone: true,
   selector: 'jhi-product',
   templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
+
   imports: [
     RouterModule,
+    HasAnyAuthorityDirective,
     FormsModule,
     SharedModule,
     SortDirective,
@@ -29,9 +33,10 @@ import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.co
   ],
 })
 export class ProductComponent implements OnInit {
-  products?: IProduct[];
   isLoading = false;
-
+  products: any[] = []; // Sua lista de produtos
+  itemsPerPage: number = 12;
+  currentPage: number = 1;
   predicate = 'id';
   ascending = true;
 
@@ -75,6 +80,31 @@ export class ProductComponent implements OnInit {
 
   navigateToWithComponentValues(): void {
     this.handleNavigation(this.predicate, this.ascending);
+  }
+  // Método para obter a lista de produtos para a página atual
+  getDisplayedProducts(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.products.slice(startIndex, endIndex);
+  }
+  onPageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+  }
+  getPages(): number[] {
+    const pageCount = Math.ceil(this.products.length / this.itemsPerPage);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
+  }
+  onNextPage(): void {
+    if (this.currentPage < this.getPages().length) {
+      this.currentPage++;
+    }
+  }
+
+  // Método para retroceder uma página
+  onPrevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {

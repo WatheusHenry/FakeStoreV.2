@@ -28,7 +28,7 @@
         </span>
       </div>
 
-      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+      <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
       </button>
     </div>
