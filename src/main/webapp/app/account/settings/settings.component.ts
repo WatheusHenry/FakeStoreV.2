@@ -14,6 +14,7 @@ const initialAccount: Account = {} as Account;
   standalone: true,
   imports: [SharedModule, FormsModule, ReactiveFormsModule],
   templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
 })
 export default class SettingsComponent implements OnInit {
   success = false;
@@ -44,7 +45,9 @@ export default class SettingsComponent implements OnInit {
     private accountService: AccountService,
     private translateService: TranslateService,
   ) {}
-
+  previousState(): void {
+    window.history.back();
+  }
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       if (account) {

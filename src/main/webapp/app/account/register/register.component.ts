@@ -14,6 +14,7 @@ import { RegisterService } from './register.service';
   standalone: true,
   imports: [SharedModule, RouterModule, FormsModule, ReactiveFormsModule, PasswordStrengthBarComponent],
   templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
 export default class RegisterComponent implements AfterViewInit {
   @ViewChild('login', { static: false })
@@ -53,7 +54,9 @@ export default class RegisterComponent implements AfterViewInit {
     private translateService: TranslateService,
     private registerService: RegisterService,
   ) {}
-
+  previousState(): void {
+    window.history.back();
+  }
   ngAfterViewInit(): void {
     if (this.login) {
       this.login.nativeElement.focus();

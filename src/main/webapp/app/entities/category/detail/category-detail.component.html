@@ -1,5 +1,8 @@
 <div class="d-flex justify-content-center">
-  <div class="col-8">
+  <button type="submit" (click)="previousState()" class="btn btnBack" data-cy="entityDetailsBackButton">
+    <fa-icon icon="arrow-left"></fa-icon><span></span>
+  </button>
+  <div class="form">
     <div *ngIf="category">
       <h2 data-cy="categoryDetailsHeading"><span jhiTranslate="fakeStoreApp.category.detail.title">Category</span></h2>
 
@@ -24,11 +27,7 @@
         </dd>
       </dl>
 
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
-      </button>
-
-      <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+      <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
       </button>
     </div>

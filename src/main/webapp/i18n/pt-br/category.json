@@ -2,7 +2,7 @@
   "fakeStoreApp": {
     "category": {
       "home": {
-        "title": "Categories",
+        "title": "{ Categories }",
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Category",
         "createOrEditLabel": "Criar ou editar Category",

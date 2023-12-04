@@ -13,6 +13,7 @@ import { SortService } from 'app/shared/sort/sort.service';
 import { IProduct } from '../product.model';
 import { EntityArrayResponseType, ProductService } from '../service/product.service';
 import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.component';
+import axios from 'axios';
 
 @Component({
   standalone: true,
@@ -35,6 +36,7 @@ import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.co
 export class ProductComponent implements OnInit {
   isLoading = false;
   products: any[] = []; // Sua lista de produtos
+  productsImgs: any[] = []; // Sua lista de produtos
   itemsPerPage: number = 12;
   currentPage: number = 1;
   predicate = 'id';
@@ -52,6 +54,21 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.load();
+    this.loadProducts();
+  }
+  loadProducts(): void {
+    // Substitua esta chamada fictícia pela lógica real para obter produtos do seu backend
+    // Exemplo fictício de chamada à API Lorem Picsum para obter URLs de imagens aleatórias
+    axios
+      .get('https://picsum.photos/v2/list?page=1&limit=30')
+      .then(response => {
+        // Extrai apenas as URLs das imagens
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        this.productsImgs = response.data.map((imageInfo: any) => imageInfo.download_url);
+      })
+      .catch(error => {
+        console.error('Erro ao carregar produtos:', error);
+      });
   }
 
   delete(product: IProduct): void {

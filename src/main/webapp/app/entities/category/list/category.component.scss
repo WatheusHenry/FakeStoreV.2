@@ -1,0 +1,45 @@
+.title {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+.table {
+  font-size: x-large;
+  font-weight: 400;
+}
+.table-entities {
+  width: 80%;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.table-striped {
+  cursor: pointer;
+}
+.btn-primary {
+  margin: auto;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #7749f8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.btn-danger {
+  margin: auto;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #f84949;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}

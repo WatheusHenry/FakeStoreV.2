@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 import SharedModule from 'app/shared/shared.module';
 import { SortDirective, SortByDirective } from 'app/shared/sort';
@@ -17,7 +18,9 @@ import { CategoryDeleteDialogComponent } from '../delete/category-delete-dialog.
   standalone: true,
   selector: 'jhi-category',
   templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss'],
   imports: [
+    HasAnyAuthorityDirective,
     RouterModule,
     FormsModule,
     SharedModule,

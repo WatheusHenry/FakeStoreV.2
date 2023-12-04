@@ -13,6 +13,7 @@ import PasswordStrengthBarComponent from './password-strength-bar/password-stren
   standalone: true,
   imports: [SharedModule, FormsModule, ReactiveFormsModule, PasswordStrengthBarComponent],
   templateUrl: './password.component.html',
+  styleUrls: ['./password.component.scss'],
 })
 export default class PasswordComponent implements OnInit {
   doNotMatch = false;

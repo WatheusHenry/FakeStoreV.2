@@ -9,6 +9,7 @@ import { PasswordResetInitService } from './password-reset-init.service';
   standalone: true,
   imports: [SharedModule, FormsModule, ReactiveFormsModule],
   templateUrl: './password-reset-init.component.html',
+  styleUrls: ['./password-reset-init.component.scss'],
 })
 export default class PasswordResetInitComponent implements AfterViewInit {
   @ViewChild('email', { static: false })
@@ -28,6 +29,9 @@ export default class PasswordResetInitComponent implements AfterViewInit {
     if (this.email) {
       this.email.nativeElement.focus();
     }
+  }
+  previousState(): void {
+    window.history.back();
   }
 
   requestReset(): void {

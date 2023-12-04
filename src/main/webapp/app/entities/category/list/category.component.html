@@ -1,24 +1,17 @@
 <div>
-  <h2 id="page-heading" data-cy="CategoryHeading">
-    <span jhiTranslate="fakeStoreApp.category.home.title">Categories</span>
+  <h2 class="title" jhiTranslate="fakeStoreApp.category.home.title">Categories</h2>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
-        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="fakeStoreApp.category.home.refreshListLabel">Atualizar lista</span>
-      </button>
-
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-category"
-        [routerLink]="['/category/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="fakeStoreApp.category.home.createLabel">Criar novo Category</span>
-      </button>
-    </div>
-  </h2>
+  <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="d-flex justify-content-end m-4">
+    <button
+      id="jh-create-entity"
+      data-cy="entityCreateButton"
+      class="btn btn-primary jh-create-entity create-category"
+      [routerLink]="['/category/new']"
+    >
+      <fa-icon icon="plus"></fa-icon>
+      <span>Add Category</span>
+    </button>
+  </div>
 
   <jhi-alert-error></jhi-alert-error>
 
@@ -54,29 +47,38 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let category of categories; trackBy: trackId" data-cy="entityTable">
+        <tr
+          class="tableLine"
+          [routerLink]="['/category', category.id, 'view']"
+          *ngFor="let category of categories; trackBy: trackId"
+          data-cy="entityTable"
+        >
           <td>
             <a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a>
           </td>
           <td>{{ category.name }}</td>
           <td>{{ category.description }}</td>
           <td class="text-end">
-            <div class="btn-group">
-              <a [routerLink]="['/category', category.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
-              </a>
+            <a
+              *jhiHasAnyAuthority="'ROLE_ADMIN'"
+              [routerLink]="['/category', category.id, 'edit']"
+              class="btn btn-primary btn-sm"
+              data-cy="entityEditButton"
+            >
+              <fa-icon icon="pencil-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+            </a>
 
-              <a [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
-              </a>
-
-              <button type="submit" (click)="delete(category)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
-              </button>
-            </div>
+            <button
+              *jhiHasAnyAuthority="'ROLE_ADMIN'"
+              type="submit"
+              (click)="delete(category)"
+              class="btn btn-danger btn-sm"
+              data-cy="entityDeleteButton"
+            >
+              <fa-icon icon="times"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+            </button>
           </td>
         </tr>
       </tbody>
