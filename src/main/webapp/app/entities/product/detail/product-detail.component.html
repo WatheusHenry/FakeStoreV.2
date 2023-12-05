@@ -31,6 +31,9 @@
       <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
       </button>
+      <button type="button" (click)="adicionarAoCarrinho(product)" class="btn btn-primary">
+        <span>Adicionar ao Carrinho</span>
+      </button>
     </div>
   </div>
 </div>
