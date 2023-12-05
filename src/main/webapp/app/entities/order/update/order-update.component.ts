@@ -6,13 +6,14 @@ import { finalize, map } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { ICustomer } from 'app/entities/customer/customer.model';
+import { UserService } from 'app/entities/user/user.service';
+// import { ICustomer } from 'app/entities/customer/customer.model';
 import { CustomerService } from 'app/entities/customer/service/customer.service';
 import { OrderStatus } from 'app/entities/enumerations/order-status.model';
 import { OrderService } from '../service/order.service';
 import { IOrder } from '../order.model';
 import { OrderFormService, OrderFormGroup } from './order-form.service';
+import { IUser } from 'app/admin/user-management/user-management.model';
 
 @Component({
   standalone: true,
@@ -25,7 +26,7 @@ export class OrderUpdateComponent implements OnInit {
   order: IOrder | null = null;
   orderStatusValues = Object.keys(OrderStatus);
 
-  customersSharedCollection: ICustomer[] = [];
+  customersSharedCollection: IUser[] = [];
 
   editForm: OrderFormGroup = this.orderFormService.createOrderFormGroup();
 
@@ -33,10 +34,11 @@ export class OrderUpdateComponent implements OnInit {
     protected orderService: OrderService,
     protected orderFormService: OrderFormService,
     protected customerService: CustomerService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
   ) {}
 
-  compareCustomer = (o1: ICustomer | null, o2: ICustomer | null): boolean => this.customerService.compareCustomer(o1, o2);
+  compareCustomer = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ order }) => {
@@ -86,19 +88,14 @@ export class OrderUpdateComponent implements OnInit {
     this.order = order;
     this.orderFormService.resetForm(this.editForm, order);
 
-    this.customersSharedCollection = this.customerService.addCustomerToCollectionIfMissing<ICustomer>(
-      this.customersSharedCollection,
-      order.customer,
-    );
+    this.customersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.customersSharedCollection, order.customer);
   }
 
   protected loadRelationshipsOptions(): void {
-    this.customerService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<ICustomer[]>) => res.body ?? []))
-      .pipe(
-        map((customers: ICustomer[]) => this.customerService.addCustomerToCollectionIfMissing<ICustomer>(customers, this.order?.customer)),
-      )
-      .subscribe((customers: ICustomer[]) => (this.customersSharedCollection = customers));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((customers: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(customers, this.order?.customer)))
+      .subscribe((customers: IUser[]) => (this.customersSharedCollection = customers));
   }
 }

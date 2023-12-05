@@ -26,7 +26,7 @@ export default class UserManagementUpdateComponent implements OnInit {
   isSaving = false;
 
   editForm = new FormGroup({
-    id: new FormControl(userTemplate.id),
+    id: new FormControl(userTemplate.id, { nonNullable: true }),
     login: new FormControl(userTemplate.login, {
       nonNullable: true,
       validators: [
