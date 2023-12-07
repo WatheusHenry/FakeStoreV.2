@@ -7,7 +7,7 @@ import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directiv
 import SharedModule from 'app/shared/shared.module';
 import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
 import { IProduct } from '../product.model';
-import { CarrinhoService } from 'app/carrinho.service';
+import { CarrinhoService } from 'app/cart/service/carrinho.service';
 
 @Component({
   standalone: true,
