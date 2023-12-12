@@ -4,15 +4,31 @@
 
     <ul class="cart-items" id="cart-items">
       <!-- Use *ngFor to iterate over each item in the cart -->
+      <p *ngIf="let item">rew</p>
       <li *ngFor="let item of carrinho">
-        {{ item.name }} - {{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}
+        <img src="../../content/images/products/mcr-hcrx-bl011.jpg" alt="" style="width: 5rem" />
+        <div>
+          <h3>{{ item.item.name }}</h3>
+          {{ item.item.price | currency: 'USD' : 'symbol' : '1.2-2' }}
+        </div>
+        <div class="quantity-div">
+          <button class="btn" (click)="removerItem(item)">
+            <i class="fas fa-times">-</i>
+          </button>
+          <p class="quantity-badge">{{ item.quantidade }}</p>
+          <button class="btn" (click)="adicionarItem(item)">
+            <i class="fas fa-times">+</i>
+          </button>
+        </div>
         <!-- You can customize the display of each item as needed -->
       </li>
     </ul>
 
     <div class="cart-summary">
-      <p>Total: <span id="cart-total">$0.00</span></p>
-      <button class="btn btn-primary">Finalizar compar</button>
+      <p>
+        Total: <span id="cart-total">{{ total | currency: 'USD' : 'symbol' : '1.2-2' }}</span>
+      </p>
+      <button class="btn-primary">Finalizar compar</button>
     </div>
   </div>
 

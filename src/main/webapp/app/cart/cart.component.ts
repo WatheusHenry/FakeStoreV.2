@@ -10,18 +10,32 @@ import { CarrinhoService } from './service/carrinho.service';
 })
 export class CartComponent implements OnInit {
   carrinho: any[] = [];
+  total: number = 0;
 
   constructor(private carrinhoService: CarrinhoService) {}
 
   ngOnInit() {
-    this.obterCarrinho();
+    this.atualizarCarrinhoETotal();
   }
 
   obterCarrinho() {
     this.carrinho = this.carrinhoService.obterCarrinho();
-    console.log(this.carrinho);
   }
-  console() {
-    return console.log(this.carrinho);
+
+  adicionarItem(item: any) {
+    this.carrinhoService.adicionarItemAoCarrinho(item.item);
+    this.atualizarCarrinhoETotal(); // Atualiza a lista e o total após remover
+  }
+
+  removerItem(item: any) {
+    this.carrinhoService.removerItemDoCarrinho(item.item.id.toString());
+    this.atualizarCarrinhoETotal(); // Atualiza a lista e o total após remover
+  }
+  calcularTotal() {
+    this.total = this.carrinhoService.calcularTotal();
+  }
+  private atualizarCarrinhoETotal() {
+    this.obterCarrinho();
+    this.calcularTotal();
   }
 }

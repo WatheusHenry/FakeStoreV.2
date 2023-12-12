@@ -49,6 +49,7 @@ export class ProductFormService {
         validators: [Validators.required],
       }),
       categories: new FormControl(productRawValue.categories ?? []),
+      image: new FormControl(productRawValue.image),
     });
   }
 

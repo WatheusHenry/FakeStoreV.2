@@ -6,6 +6,7 @@ export interface IProduct {
   description?: string | null;
   price?: number | null;
   categories?: Pick<ICategory, 'id' | 'name'>[] | null;
+  image?: string | null;
 }
 
 export type NewProduct = Omit<IProduct, 'id'> & { id: null };

@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgModel } from '@angular/forms';
+
 import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 import SharedModule from 'app/shared/shared.module';
@@ -41,6 +44,7 @@ export class ProductComponent implements OnInit {
   currentPage: number = 1;
   predicate = 'id';
   ascending = true;
+  searchTerm: string = '';
 
   constructor(
     protected productService: ProductService,
@@ -56,6 +60,17 @@ export class ProductComponent implements OnInit {
     this.load();
     this.loadProducts();
   }
+  search(): void {
+    // Execute a pesquisa somente se houver um termo de pesquisa
+    if (this.searchTerm.trim() !== '') {
+      // Filtra os produtos localmente com base no termo de pesquisa
+      this.products = this.filterProducts(this.products, this.searchTerm);
+    } else {
+      // Se o termo de pesquisa estiver vazio, execute a consulta padrão
+      this.load();
+    }
+  }
+
   loadProducts(): void {
     // Substitua esta chamada fictícia pela lógica real para obter produtos do seu backend
     // Exemplo fictício de chamada à API Lorem Picsum para obter URLs de imagens aleatórias
@@ -122,6 +137,20 @@ export class ProductComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage--;
     }
+  }
+
+  private filterProducts(products: IProduct[], searchTerm: string): IProduct[] {
+    // Converte o termo de pesquisa para minúsculas para uma comparação sem distinção entre maiúsculas e minúsculas
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+    // Filtra os produtos com base no termo de pesquisa
+    return products.filter(
+      product =>
+        // Você pode ajustar essa lógica de filtro conforme necessário
+        // Aqui, estamos verificando se o nome ou outra propriedade do produto contém o termo de pesquisa
+        product.name?.toLowerCase().includes(lowerCaseSearchTerm),
+      // Adicione mais condições conforme necessário
+    );
   }
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {

@@ -50,6 +50,9 @@ public class Product implements Serializable {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
+    @Column(name = "image")
+    private String image;
+
     public Long getId() {
         return this.id;
     }
@@ -126,6 +129,18 @@ public class Product implements Serializable {
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+    public String getImage() {
+        return this.image;
+    }
+
+    public Product image(String image) {
+        this.setImage(image);
+        return this;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -151,7 +166,9 @@ public class Product implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
-            ", price=" + getPrice() +
+            ", price=" + getPrice() + "'" +
+            ", image=" + getImage() +
+
             "}";
     }
 }

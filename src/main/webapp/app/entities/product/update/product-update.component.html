@@ -49,6 +49,19 @@
         </div>
 
         <div class="mb-3">
+          <label class="form-label" for="field_image">ImageUrl</label>
+          <input type="string" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <div *ngIf="editForm.get('image')!.invalid && (editForm.get('image')!.dirty || editForm.get('image')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('image')?.errors?.required" jhiTranslate="entity.validation.required"
+              >O campo é obrigatório.</small
+            >
+            <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number"
+              >Este campo é do tipo numérico.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
           <label jhiTranslate="fakeStoreApp.product.categories" for="field_categories">Categories</label>
           <select
             class="form-control"
