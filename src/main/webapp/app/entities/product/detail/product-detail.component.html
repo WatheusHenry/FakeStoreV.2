@@ -3,7 +3,7 @@
     <fa-icon icon="arrow-left"></fa-icon><span></span>
   </button>
   <div class="d-flex containerAll">
-    <img src="../../../../content/images/products/mcr-hcrx-bl011.jpg" class="productImg" alt="" />
+    <img src="{{ product?.image }}" class="productImg" alt="" />
     <div class="productDetails" *ngIf="product">
       <h2 data-cy="productDetailsHeading">
         <span>{{ product.name }}</span>

@@ -36,7 +36,7 @@
         </div> -->
       <div class="produtos">
         <div class="cardProdutos" *ngFor="let product of products.slice(0, 3)">
-          <img class="productImage" alt="" />
+          <img class="productImage" src="{{ product?.image }}" alt="" />
           <h3 class="productTitle">{{ product.name }}</h3>
           <p class="productDescription">{{ product.description }}</p>
           <p class="productPrice">R${{ product.price }}</p>

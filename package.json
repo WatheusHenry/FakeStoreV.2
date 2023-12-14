@@ -69,9 +69,9 @@
     "packaging": "jar"
   },
   "dependencies": {
-    "@angular/common": "^17.0.6",
+    "@angular/common": "16.2.11",
     "@angular/compiler": "16.2.11",
-    "@angular/core": "^17.0.6",
+    "@angular/core": "16.2.11",
     "@angular/forms": "16.2.11",
     "@angular/localize": "16.2.11",
     "@angular/platform-browser": "16.2.11",
@@ -89,7 +89,7 @@
     "dayjs": "1.11.10",
     "ngx-infinite-scroll": "16.0.0",
     "primeicons": "^6.0.1",
-    "primeng": "^17.0.0",
+    "primeng": "16.9.1",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
     "zone.js": "0.13.3"

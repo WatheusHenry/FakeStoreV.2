@@ -6,7 +6,7 @@
       <!-- Use *ngFor to iterate over each item in the cart -->
       <p *ngIf="let item">rew</p>
       <li *ngFor="let item of carrinho">
-        <img src="../../content/images/products/mcr-hcrx-bl011.jpg" alt="" style="width: 5rem" />
+        <img src="{{ item.item.image }}" alt="" style="width: 5rem" />
         <div>
           <h3>{{ item.item.name }}</h3>
           {{ item.item.price | currency: 'USD' : 'symbol' : '1.2-2' }}

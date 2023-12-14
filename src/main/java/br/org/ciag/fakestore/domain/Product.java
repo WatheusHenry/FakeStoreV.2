@@ -129,6 +129,18 @@ public class Product implements Serializable {
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Product)) {
+            return false;
+        }
+        return getId() != null && getId().equals(((Product) o).getId());
+    }
+
     public String getImage() {
         return this.image;
     }
@@ -140,17 +152,6 @@ public class Product implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Product)) {
-            return false;
-        }
-        return getId() != null && getId().equals(((Product) o).getId());
     }
 
     @Override

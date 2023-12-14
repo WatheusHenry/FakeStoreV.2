@@ -22,6 +22,7 @@ type ProductFormGroupContent = {
   description: FormControl<IProduct['description']>;
   price: FormControl<IProduct['price']>;
   categories: FormControl<IProduct['categories']>;
+  image: FormControl<IProduct['image']>;
 };
 
 export type ProductFormGroup = FormGroup<ProductFormGroupContent>;
